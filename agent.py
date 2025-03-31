@@ -6,7 +6,6 @@ import requests
 import time
 import os  
 import traceback
-import hashlib
 import config 
 import dateparser
 from django.conf import settings
