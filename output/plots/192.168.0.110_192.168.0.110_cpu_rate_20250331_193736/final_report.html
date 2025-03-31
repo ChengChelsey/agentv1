@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>多序列对比异常检测报告</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; }
+        .iframe-container { width: 100%; height: 650px; border: none; }
+        .markdown-content { line-height: 1.6; }
+        .markdown-content h3 { margin-top: 20px; margin-bottom: 15px; color: #333; font-size: 1.4rem; }
+        .markdown-content h2 { margin-top: 25px; margin-bottom: 15px; color: #222; font-size: 1.6rem; }
+        .markdown-content h1 { margin-top: 30px; margin-bottom: 20px; color: #111; font-size: 1.8rem; }
+        .markdown-content p { margin-bottom: 15px; font-size: 1rem; }
+        .markdown-content strong { font-weight: 600; color: #444; }
+        .markdown-content ul, .markdown-content ol { margin-bottom: 15px; padding-left: 25px; }
+        .markdown-content li { margin-bottom: 5px; }
+        .info-box { 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            padding: 10px; 
+            margin-bottom: 15px; 
+            background-color: #f9f9f9; 
+        }
+        .hint-text {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .ai-analysis {
+            background-color: #f8f9fa;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .ai-analysis-title {
+            color: #17a2b8;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">多序列对比异常检测报告</h1>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>用户问题</strong>
+            </div>
+            <div class="card-body">
+                <p>对比分析 192.168.0.110 在 2025-03-29 00:00:00 和 192.168.0.110 在 2025-03-30 00:00:00 的 cpu_rate/cpu_rate 指标</p>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>分析结论</strong>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success">
+                    <h4>综合判定: 正常</h4>
+                    <p>综合得分: 0.16</p>
+                </div>
+                
+                <!-- 大模型分析报告 -->
+                <div class="ai-analysis">
+                    <div class="markdown-content">
+                        <h2>对比分析报告：192.168.0.110 的 CPU 使用率对比</h2>
+<h3>两个序列的对比摘要</h3>
+<p>本次对比分析了192.168.0.110在2025年3月29日和2025年3月30日的CPU使用率数据。总体来看，两序列的CPU使用率趋势较为一致，但存在少量异常点和区间，综合得分0.16表明异常程度较低。</p>
+<h3>差异模式与趋势分析</h3>
+<p>从检测结果来看，两序列在2025年3月29日00:35至19:05期间存在显著的趋势差异，这表明在该时间段内，两序列的CPU使用率变化趋势存在明显不同。此外，趋势斜率检测方法发现了三个异常点，表明在这些时间点上，两序列的CPU使用率变化斜率存在显著差异。</p>
+<h3>各检测方法发现的问题详解</h3>
+<ul><li><strong>TrendDriftCUSUM</strong>方法发现了一个异常区间，该区间内两序列的CPU使用率变化趋势存在显著差异，这可能表明在该时间段内，服务器的负载情况发生了变化。</li></ul>
+<ul><li><strong>ChangeRate</strong>方法发现了三个异常点，这些点的变化速率差异较大，表明在这些时间点上，两序列的CPU使用率变化速率存在显著差异。</li></ul>
+<ul><li><strong>TrendSlope</strong>方法发现了三个异常点，这些点的斜率差异较大，表明在这些时间点上，两序列的CPU使用率变化斜率存在显著差异。</li></ul>
+<h3>异常的可能原因</h3>
+<ul><li><strong>负载变化</strong>：在异常区间内，服务器的负载情况发生了变化，可能是由于应用程序的运行状态、用户活动或外部因素导致的。</li></ul>
+<ul><li><strong>系统配置变更</strong>：在异常点附近，可能进行了系统配置变更，如调整了进程优先级、修改了资源限制等，导致CPU使用率的变化斜率或变化速率发生了显著变化。</li></ul>
+<ul><li><strong>外部因素</strong>：外部因素，如网络延迟、磁盘I/O瓶颈等，也可能导致CPU使用率的变化斜率或变化速率发生了显著变化。</li></ul>
+<h3>建议的后续操作</h3>
+<ul><li><strong>监控与日志分析</strong>：进一步监控服务器的运行状态，并分析日志文件，以确定异常点和异常区间的具体原因。</li></ul>
+<ul><li><strong>性能优化</strong>：根据分析结果，对服务器的配置进行优化，以提高系统的稳定性和性能。</li></ul>
+<ul><li><strong>定期检查</strong>：定期进行类似的对比分析，以确保系统的稳定性和性能。</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>异常检测图表</strong>
+            </div>
+            <div class="card-body p-0">
+                <div class="info-box">
+                    <p class="hint-text">提示: 将鼠标悬停在异常点上可查看详细信息。</p>
+                </div>
+                <iframe class="iframe-container" src="summary.html"></iframe>
+            </div>
+        </div>
+        
+        <h2 class="mt-4 mb-3">检测方法摘要</h2>
+        
+        <div class="card mb-2">
+            <div class="card-header">
+                <strong>ResidualComparison</strong>
+            </div>
+            <div class="card-body">
+                <p>基于残差Z分数检测出 0 个异常点（阈值=3.5）</p>
+            </div>
+        </div>
+        
+        <div class="card mb-2">
+            <div class="card-header">
+                <strong>TrendDriftCUSUM</strong>
+            </div>
+            <div class="card-body">
+                <p>趋势漂移检测发现 1 个明显异常区段，相对差异588.3%</p>
+            </div>
+        </div>
+        
+        <div class="card mb-2">
+            <div class="card-header">
+                <strong>ChangeRate</strong>
+            </div>
+            <div class="card-body">
+                <p>ChangeRate 用于比较两个序列的局部变化速度，检测出速率差异较大的时间点</p>
+            </div>
+        </div>
+        
+        <div class="card mb-2">
+            <div class="card-header">
+                <strong>TrendSlope</strong>
+            </div>
+            <div class="card-body">
+                <p>TrendSlope 检测两个序列在滑动窗口下的局部趋势方向差异，发现 3 个异常点</p>
+            </div>
+        </div>
+        
+        
+        <footer class="mt-5 text-center text-muted">
+            <p>生成时间: 2025-03-31 19:37:44</p>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

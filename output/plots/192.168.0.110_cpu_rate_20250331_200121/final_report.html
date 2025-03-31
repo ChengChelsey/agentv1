@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>时序数据异常检测报告</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; }
+        .iframe-container { width: 100%; height: 650px; border: none; }
+        .markdown-content { line-height: 1.6; }
+        .markdown-content h3 { margin-top: 20px; margin-bottom: 15px; color: #333; font-size: 1.4rem; }
+        .markdown-content h2 { margin-top: 25px; margin-bottom: 15px; color: #222; font-size: 1.6rem; }
+        .markdown-content h1 { margin-top: 30px; margin-bottom: 20px; color: #111; font-size: 1.8rem; }
+        .markdown-content p { margin-bottom: 15px; font-size: 1rem; }
+        .markdown-content strong { font-weight: 600; color: #444; }
+        .markdown-content ul, .markdown-content ol { margin-bottom: 15px; padding-left: 25px; }
+        .markdown-content li { margin-bottom: 5px; }
+        .info-box { 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            padding: 10px; 
+            margin-bottom: 15px; 
+            background-color: #f9f9f9; 
+        }
+        .hint-text {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .ai-analysis {
+            background-color: #f8f9fa;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .ai-analysis-title {
+            color: #17a2b8;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">时序数据异常检测报告</h1>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>用户问题</strong>
+            </div>
+            <div class="card-body">
+                <p>请分析192.168.0.110这台主机上周星期一和上上周星期一还有前天的cpu利用率，并作图给出分析报告</p>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>分析结论</strong>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success">
+                    <h4>综合判定: 正常</h4>
+                    <p>综合得分: 0.34</p>
+                </div>
+                
+                <!-- 大模型分析报告 -->
+                <div class="ai-analysis">
+                    <div class="markdown-content">
+                        <h1>192.168.0.110主机CPU利用率异常检测分析报告</h1>
+<h2>总体异常状况摘要</h2>
+<p>本次异常检测结果显示，192.168.0.110主机在上周星期一、上上周星期一以及前天的CPU利用率数据中，共检测到6个异常点。尽管综合得分为0.34，表明整体状况较为正常，但这些异常点仍需进一步分析，以确保系统稳定运行。</p>
+<h2>各检测方法发现的问题分析</h2>
+<h3>Z-Score方法</h3>
+<p>Z-Score方法检测到一个异常点，该点的Z-Score值为4.35，远高于均值4.35个标准差。这表明该点的CPU利用率显著高于正常范围，可能反映了系统在该时间段内承受了异常高的负载。</p>
+<h3>CUSUM方法</h3>
+<p>CUSUM方法检测到6个异常点，其中包含一个异常区间。CUSUM值分别为5.95、8.30和7.31，均超过阈值5.0。CUSUM方法通过累积偏移来检测趋势变化，这些高CUSUM值表明CPU利用率在这些时间段内有显著上升趋势，可能反映了系统负载的逐步增加。</p>
+<h2>可能的原因分析</h2>
+<li><strong>周期性任务执行</strong>：可能是由于周期性任务（如备份、数据库维护等）在特定时间段内执行，导致CPU利用率显著上升。</li>
+<li><strong>软件或硬件故障</strong>：可能存在软件bug或硬件故障，导致系统在特定时间段内异常运行。</li>
+<li><strong>外部因素影响</strong>：外部网络攻击或恶意软件感染也可能导致CPU利用率异常升高。</li>
+<h2>建议的后续操作</h2>
+<li><strong>详细日志审查</strong>：检查系统日志，寻找与异常时间段相关的事件记录，以确定具体原因。</li>
+<li><strong>性能监控</strong>：增加性能监控工具，持续监测CPU利用率，确保及时发现并处理异常情况。</li>
+<li><strong>优化任务调度</strong>：重新评估并优化周期性任务的执行时间，避免在业务高峰期执行高负载任务。</li>
+<li><strong>安全检查</strong>：进行全面的安全检查，确保系统免受外部威胁的影响。</li>
+<p>通过上述措施，可以有效降低未来出现类似异常情况的风险，确保系统的稳定运行。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>异常检测图表</strong>
+            </div>
+            <div class="card-body p-0">
+                <div class="info-box">
+                    <p class="hint-text">提示: 将鼠标悬停在异常点上可查看详细信息。</p>
+                </div>
+                <iframe class="iframe-container" src="summary.html"></iframe>
+            </div>
+        </div>
+        
+        <h2 class="mt-4 mb-3">检测方法摘要</h2>
+        
+        <div class="card mb-2">
+            <div class="card-header">
+                <strong>Z-Score</strong>
+            </div>
+            <div class="card-body">
+                <p>使用Z-Score方法(阈值=3.5)检测到1个异常点</p>
+            </div>
+        </div>
+        
+        <div class="card mb-2">
+            <div class="card-header">
+                <strong>CUSUM</strong>
+            </div>
+            <div class="card-body">
+                <p>CUSUM累积偏移检测到 1 个异常区段，共 6 个高偏移点</p>
+            </div>
+        </div>
+        
+        
+        <footer class="mt-5 text-center text-muted">
+            <p>生成时间: 2025-03-31 20:01:27</p>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
